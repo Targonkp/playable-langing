@@ -1,0 +1,28 @@
+
+@mixin x-small{
+  @media only screen and (max-width: 359px) { @content; }
+}
+@mixin small{
+  @media only screen and (max-width: 767px) { @content; }
+}
+@mixin medium{
+  @media only screen and (max-width: 1023px) { @content; }
+}
+
+@mixin x-small-portrait {
+  @media only screen and (max-width: 359px) and (orientation: portrait) {
+    @content;
+  }
+}
+
+@mixin small-portrait {
+  @media only screen and (max-width: 767px) and (orientation: portrait) {
+    @content;
+  }
+}
+
+@mixin medium-portrait {
+  @media only screen and (max-width: 1023px) and (orientation: portrait) {
+    @content;
+  }
+}

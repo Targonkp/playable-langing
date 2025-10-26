@@ -1,0 +1,482 @@
+@use 'global';
+@use 'adaptive';
+
+header{
+  width: 100%;
+  padding: 24px 0 0 0;
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 100;
+  background: transparent;
+
+
+  @include adaptive.small{
+    padding: 16px 0 0 0;
+  }
+}
+
+.header-wrap{
+  display: flex;
+  justify-content: space-between;
+  flex-direction: column;
+  padding: 0 6.45%;
+  box-sizing: border-box;
+
+  @include adaptive.medium{
+    flex-direction: row;
+    padding: 0 3.2%;
+  }
+
+  @include adaptive.small{
+    padding: 0 4.4%;
+  }
+}
+
+.weather-container-wrap{
+  display: flex;
+  justify-content: left;
+
+  @include adaptive.medium{
+    order: 1;
+  }
+}
+
+.language-container-wrap{
+  display: flex;
+  justify-content: right;
+  margin: 0 0 17px 0;
+
+  @include adaptive.medium{
+    margin: 0;
+    order: 2;
+  }
+}
+
+.main-container{
+  width: 100%;
+  min-height: 100vh;
+  min-height: 100dvh;
+  background: url("../images/main-background-image.jpg") top center / cover no-repeat;
+  position: relative;
+  padding: 200px 50px;
+  box-sizing: border-box;
+  overflow: hidden;
+
+  @include adaptive.medium{
+    padding: 150px 40px;
+  }
+
+  @include adaptive.small{
+    padding: 70px 30px;
+  }
+}
+
+.clouds-container{
+  position: absolute;
+  z-index: 30;
+  width: 100%;
+  height: 53%;
+  bottom: 0;
+  left: 0;
+  background: url("../images/clouds.png") top center / cover no-repeat;
+  pointer-events: none;
+
+  @include adaptive.medium-portrait{
+    height: 37%;
+  }
+}
+
+.character-container{
+  position: absolute;
+  right: 2%;
+  bottom: 0;
+  z-index: 10;
+  width: 42%;
+  height: 100%;
+  overflow: hidden;
+
+  @include adaptive.small{
+    width: 47%;
+  }
+
+  @include adaptive.medium-portrait{
+    width: 67%;
+    bottom: 5%;
+    height: 90%;
+    left: 50%;
+    transform: translateX(-50%);
+  }
+
+  &__image{
+    display: block;
+    width: 100%;
+    height: auto;
+    transform: translateY(6%);
+    animation: levitate 7s ease-in-out infinite;
+  }
+}
+
+.language-container{
+  width: 40px;
+  height: auto;
+
+  &__image{
+    display: block;
+    width: 100%;
+    height: auto;
+  }
+}
+
+.weather-container{
+  padding: 20px 32px 32px 32px;
+  background: rgba(0, 0, 0, 0.001);
+  border-radius: 32px;
+  background: radial-gradient(100% 100% at 0% 0%, rgba(255, 255, 255, 0.4) 0%, rgba(0, 0, 0, 0) 100%);
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  box-shadow: 0 1px 12px 0 rgba(0, 0, 0, 0.3);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  color: global.$text_main_color;
+
+  @include adaptive.small{
+    padding: 14px 22px 22px 22px;
+    border-radius: 22px;
+  }
+
+  &__temperature{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0 0 2px 0;
+  }
+
+
+  &__value{
+    font-weight: 700;
+    font-size: 58px;
+    line-height: 120%;
+    letter-spacing: -0.01em;
+    position: relative;
+
+    @include adaptive.small{
+      font-size: 40px;
+    }
+
+    &::after{
+      position: absolute;
+      content: "° C";
+      top: 0;
+      left: 100%;
+      font-weight: 600;
+      font-size: 16px;
+      line-height: 120%;
+      letter-spacing: -0.05em;
+      margin-left: 4px;
+      display: inline-block;
+      white-space: nowrap;
+    }
+
+    &.weather-loading{
+      opacity: 0.5;
+      animation: blink 1.2s infinite;
+    }
+  }
+
+
+  &__location{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  &__icon{
+    width: 16px;
+    height: 16px;
+    margin: 0 4px 0 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    @include adaptive.small{
+      width: 11px;
+      height: 11px;
+    }
+
+    svg{
+      display: inline-block;
+      height: 100%;
+      width: auto;
+    }
+  }
+
+  &__city{
+    font-weight: 600;
+    font-size: 16px;
+    line-height: 100%;
+    letter-spacing: -0.05em;
+
+    @include adaptive.small{
+      font-size: 11px;
+    }
+  }
+}
+
+
+.wheel-container{
+  position: absolute;
+  z-index: 20;
+  width: 50%;
+  height: 90%;
+  bottom: 3.8%;
+  left: 8%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  overflow: hidden;
+
+  @include adaptive.small{
+    bottom: 0;
+    left: 0;
+    width: 60%;
+    height: 120%;
+    transform: translateY(20%);
+  }
+
+  @include adaptive.medium-portrait{
+    width: 84%;
+    height: 70%;
+    bottom: 0;
+    left: 50%;
+    transform: translate(-50%, 8%);
+  }
+}
+
+.wheel {
+  position: absolute;
+  object-fit: contain;
+}
+
+.wheel-stop{
+  animation: none !important;
+}
+
+.wheel__base {
+  z-index: 1;
+  animation: wheelTilt 4.5s ease-in-out infinite;
+  transform-origin: center;
+  width: 100%;
+  height: 100%;
+}
+
+.wheel__border {
+  z-index: 2;
+  width: 100%;
+  height: 100%;
+}
+
+.wheel__button {
+  z-index: 3;
+  cursor: pointer;
+  background: none;
+  border: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 27%;
+  height: 27%;
+  transition: transform 0.15s ease;
+  pointer-events: auto;
+
+  img{
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+    display: block;
+  }
+}
+
+.wheel__button.is-pressed {
+  transform: scale(0.9);
+}
+
+.wheel__button.disabled {
+  pointer-events: none;
+  opacity: 0.85;
+}
+
+.decorations{
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: 40;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  overflow: hidden;
+  display: block;
+
+  @include adaptive.medium{
+    display: none;
+  }
+
+  &__items{
+    position: absolute;
+    animation: levitateDiamondCoins ease-in-out infinite;
+    --dx: 0px; //transform-x
+    --dy: 0px; //transform-y
+
+    img{
+      display: block;
+      width: 100%;
+      height: auto;
+    }
+
+    &:nth-child(1) {
+      width: 17.1%;
+      top: 25.5%;
+      left: 0;
+
+      --dx: -40%;
+      --dy: 0%;
+      animation-duration: 5s;
+      animation-delay: 0s;
+    }
+
+    &:nth-child(2) {
+      width: 26%;
+      bottom: 0;
+      right: 0;
+
+      --dx: 3%;
+      --dy: 18%;
+      animation-duration: 6s;
+    }
+
+    &:nth-child(3) {
+      width: 31.5%;
+      left: 0;
+      bottom: 0;
+
+      --dx: -18%;
+      --dy: 44%;
+      animation-duration: 8s;
+    }
+
+    &:nth-child(4) {
+      width: 17.7%;
+      right: 10%;
+      top: 0;
+
+      --dx: 0%;
+      --dy: -45%;
+      animation-duration: 8.2s;
+    }
+
+    &:nth-child(5) {
+      width: 11%;
+      top: 24%;
+      right: 0;
+
+      --dx: 22%;
+      --dy: 0%;
+      animation-duration: 7.5s;
+    }
+
+    &:nth-child(6) {
+      width: 22%;
+      top: 48%;
+      left: 0;
+      --dx: -45%;
+      --dy: 0%;
+      animation-duration: 7.8s;
+    }
+
+    &:nth-child(7) {
+      width: 15.2%;
+      top: 49%;
+      right: 0;
+      --dx: 40%;
+      --dy: 0%;
+      animation-duration: 7s;
+    }
+
+    &:nth-child(8) {
+      width: 8.2%;
+      top: 0;
+      right: 26%;
+      --dx: 0%;
+      --dy: -45%;
+      animation-duration: 6.5s;
+    }
+
+    &:nth-child(9) {
+      width: 11%;
+      right: 0;
+      top: 4.4%;
+      --dx: 40%;
+      --dy: 0%;
+      animation-duration: 7.8s;
+    }
+
+    &:nth-child(10) {
+      width: 11%;
+      left: 22%;
+      bottom: 0;
+      --dx: 0%;
+      --dy: 50%;
+      animation-duration: 6.9s;
+    }
+  }
+}
+
+
+.weather-message {
+  margin-bottom: 10px;
+  font-size: 16px;
+  text-align: center;
+}
+
+@keyframes levitate {
+  0% {
+    transform: translateY(6%);
+  }
+  50% {
+    transform: translateY(2%);
+  }
+  100% {
+    transform: translateY(6%);
+  }
+}
+
+@keyframes levitateDiamondCoins {
+  0%, 100% {
+    transform: translate(var(--dx), var(--dy));
+  }
+  50% {
+    transform: translate(var(--dx), calc(var(--dy) - 12%));
+  }
+}
+
+@keyframes wheelTilt {
+  0% {
+    transform: rotate(0deg);
+  }
+  50% {
+    transform: rotate(3deg); /* угол можно подстроить */
+  }
+  100% {
+    transform: rotate(0deg);
+  }
+}
+
+@keyframes blink {
+  0% { opacity: 0.2; }
+  50% { opacity: 1; }
+  100% { opacity: 0.2; }
+}
