@@ -57,7 +57,7 @@ header{
   width: 100%;
   min-height: 100vh;
   min-height: 100dvh;
-  background: url("../images/main-background-image.jpg") top center / cover no-repeat;
+  background: url("../images/main-background-image.jpg") center top / cover no-repeat;
   position: relative;
   padding: 200px 50px;
   box-sizing: border-box;
@@ -65,10 +65,13 @@ header{
 
   @include adaptive.medium{
     padding: 150px 40px;
+    background-size: 100% 100%;
   }
 
   @include adaptive.small{
     padding: 70px 30px;
+    background-size: cover;
+    background-position: 65% top;
   }
 }
 
@@ -85,6 +88,15 @@ header{
   @include adaptive.medium-portrait{
     height: 37%;
   }
+
+  @include adaptive.small{
+    height: 40%;
+  }
+  
+  @include adaptive.small-portrait{
+    height: 45%;
+    z-index: 20;
+  }
 }
 
 .character-container{
@@ -96,16 +108,23 @@ header{
   height: 100%;
   overflow: hidden;
 
-  @include adaptive.small{
-    width: 47%;
-  }
-
   @include adaptive.medium-portrait{
     width: 67%;
     bottom: 5%;
     height: 90%;
     left: 50%;
     transform: translateX(-50%);
+  }
+
+  @include adaptive.small{
+    width: 47%;
+  }
+
+  @include adaptive.small-portrait{
+    width: 125%;
+    height: 100%;
+    top: 0;
+    transform: translateX(-20%);
   }
 
   &__image{
@@ -120,6 +139,24 @@ header{
 .language-container{
   width: 40px;
   height: auto;
+  position: relative;
+
+  @include adaptive.small{
+    width: 30px;
+  }
+
+  &__button{
+    width: 100%;
+    background: none;
+    border: none;
+    cursor: pointer;
+    transition: 0.2s;
+
+    &:hover{
+      opacity: 0.8;
+      transition: 0.2s;
+    }
+  }
 
   &__image{
     display: block;
@@ -178,6 +215,11 @@ header{
       margin-left: 4px;
       display: inline-block;
       white-space: nowrap;
+
+      @include adaptive.small{
+        font-size: 11px;
+        margin-left: 0;
+      }
     }
 
     &.weather-loading{
@@ -252,6 +294,12 @@ header{
     bottom: 0;
     left: 50%;
     transform: translate(-50%, 8%);
+  }
+
+  @include adaptive.small-portrait{
+      width: 120%;
+      transform: translate(-50%, 18%);
+      z-index: 30;
   }
 }
 

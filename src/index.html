@@ -12,7 +12,31 @@
       <div class="header-wrap">
         <div class="language-container-wrap">
           <div class="language-container">
-            <img src="images/flag.png" alt="Русский язык" class="language-container__image" />
+            <button class="language-container__button">
+              <img
+                src="images/flags/Flag_ru.svg"
+                alt="Русский язык"
+                class="language-container__image"
+                id="current-flag"
+              />
+            </button>
+            <ul class="language-list hidden">
+              <li class="language-list__item selected" data-lang="ru" tabindex="0">
+                <img src="images/flags/Flag_ru.svg" alt="Русский" /><span>Русский</span>
+              </li>
+              <li class="language-list__item" data-lang="kz" tabindex="0">
+                <img src="images/flags/Flag_kz.svg" alt="Қазақша" /><span>Қазақша</span>
+              </li>
+              <li class="language-list__item" data-lang="uz" tabindex="0">
+                <img src="images/flags/Flag_uz.svg" alt="O'zbek" /><span>O'zbek</span>
+              </li>
+              <li class="language-list__item" data-lang="kg" tabindex="0">
+                <img src="images/flags/Flag_kg.svg" alt="Кыргызча" /><span>Кыргызча</span>
+              </li>
+              <li class="language-list__item" data-lang="bd" tabindex="0">
+                <img src="images/flags/Flag_bd.svg" alt="বাংলা" /><span>বাংলা</span>
+              </li>
+            </ul>
           </div>
         </div>
         <div class="weather-container-wrap">
@@ -45,11 +69,11 @@
     <main>
       <div class="main-container">
         <div class="wheel-container">
-          <img class="wheel wheel__base" src="images/wheel.png" alt="Колесо" />
+          <img class="wheel wheel__base" src="images/wheels/wheel_ru.png" alt="Колесо" />
           <button class="wheel wheel__button" aria-label="Запустить вращение">
             <img src="images/wheel_button.png" alt="Кнопка" aria-hidden="true" />
           </button>
-          <img class="wheel wheel__border" src="images/wheel_frame.png" alt="Ободок" />
+          <img class="wheel wheel__border" src="images/wheel_frame.png" alt="Граница колеса" />
         </div>
         <div class="clouds-container"></div>
         <div class="character-container">
