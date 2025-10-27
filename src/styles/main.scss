@@ -268,39 +268,51 @@ header{
 }
 
 
-.wheel-container{
+.wheel-wrapper {
   position: absolute;
   z-index: 20;
-  width: 50%;
   height: 90%;
-  bottom: 3.8%;
+  aspect-ratio: 1/1;
+  bottom: 3.5%;
   left: 8%;
+  overflow: hidden;
   display: flex;
   justify-content: center;
   align-items: center;
-  overflow: hidden;
 
-  @include adaptive.small{
-    bottom: 0;
+  @include adaptive.small {
+    top: 0;
     left: 0;
-    width: 60%;
     height: 120%;
-    transform: translateY(20%);
+    bottom: auto;
+    transform: translateY(5%);
   }
 
-  @include adaptive.medium-portrait{
-    width: 84%;
+  @include adaptive.medium-portrait {
     height: 70%;
     bottom: 0;
     left: 50%;
-    transform: translate(-50%, 8%);
+    transform: translate(-50%, 5%);
   }
 
-  @include adaptive.small-portrait{
-      width: 120%;
-      transform: translate(-50%, 18%);
-      z-index: 30;
+  @include adaptive.small-portrait {
+    height: 60%;
+    top: auto;
+    bottom: 0;
+    left: 50%;
+    transform: translate(-50%, 18%) scale(1.2);
+    z-index: 30;
   }
+}
+
+.wheel-container {
+  width: 100%;
+  aspect-ratio: 1/1;
+  position: relative; /* было absolute — больше не нужно */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  transform-origin: center;
 }
 
 .wheel {
@@ -312,19 +324,101 @@ header{
   animation: none !important;
 }
 
-.wheel__base {
+.wheel__main{
+  position: absolute;
+  top: 0;
+  left: 0;
   z-index: 1;
+  width: 100%;
+  height: 100%;
   animation: wheelTilt 4.5s ease-in-out infinite;
+}
+
+.wheel__base {
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: 1;
   transform-origin: center;
   width: 100%;
   height: 100%;
 }
 
+.wheel__text{
+  position: absolute;
+  z-index: 1;
+  width: 100%;
+  height: 100%;
+
+  .bonus-item{
+    position: absolute;
+    img{
+      display: block;
+      width: 100%;
+      height: auto;
+    }
+  }
+
+  .bonus-item.text{
+    width: 19.5%;
+  }
+
+  .bonus-item.image{
+    width: 7.5%;
+  }
+
+  .bonus-item:nth-child(1){
+    top: 19%;
+    left: 39%;
+  }
+
+  .bonus-item:nth-child(2){
+    transform: rotate(44.5deg);
+    top: 27.5%;
+    left: 59%;
+  }
+
+  .bonus-item:nth-child(3){
+    top: 46%;
+    left: 73%;
+  }
+
+  .bonus-item:nth-child(4){
+    top: 67%;
+    left: 67%;
+  }
+
+  .bonus-item:nth-child(5){
+    transform: rotate(179.5deg);
+    top: 75%;
+    left: 40%;
+  }
+
+  .bonus-item:nth-child(6){
+    top: 67%;
+    left: 27%;
+  }
+
+  .bonus-item:nth-child(7){
+    transform: rotate(-90.5deg);
+    top: 47%;
+    left: 13%;
+  }
+
+  .bonus-item:nth-child(8){
+    top: 26.5%;
+    left: 26.5%;
+  }
+}
+
 .wheel__border {
+  top: 0;
+  left: 0;
   z-index: 2;
   width: 100%;
   height: 100%;
 }
+
 
 .wheel__button {
   z-index: 3;

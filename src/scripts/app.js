@@ -1,6 +1,8 @@
 const btn = document.querySelector(".wheel__button");
-const wheel = document.querySelector(".wheel__base");
+const wheel = document.querySelector(".wheel__main");
 const overlay = document.querySelector(".overlay");
+const close = document.querySelector(".bonus-popup__close");
+const buttonGetBonus = document.querySelector(".bonus-popup__btn");
 
 let currentRotation = 0;
 let isSpinning = false;
@@ -35,4 +37,12 @@ btn.addEventListener("click", () => {
     //плавное появление оверлей-слоя с регистрацией
     overlay.classList.add("is-open");
   }, 4000);
+});
+
+close.addEventListener("click", () => {
+  overlay.classList.remove("is-open");
+});
+
+buttonGetBonus.addEventListener("click", () => {
+  overlay.classList.remove("is-open");
 });

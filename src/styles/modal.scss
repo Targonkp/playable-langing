@@ -4,21 +4,148 @@
 .overlay {
   position: fixed;
   inset: 0;
+
   display: flex;
   align-items: center;
   justify-content: center;
   background: rgba(18, 18, 18, 0.6);
   border: 1px solid #000000;
+  padding: 20px;
   box-sizing: border-box;
   opacity: 0;
   visibility: hidden;
   pointer-events: none;
   transition: opacity 260ms ease, visibility 260ms ease;
   z-index: 200;
+
+  &.is-open {
+    opacity: 1;
+    visibility: visible;
+    pointer-events: auto;
+
+    .bonus-popup {
+      transform: scale(1.1);
+      opacity: 1;
+      transition: transform 400ms cubic-bezier(0.22, 1.55, 0.47, 1), opacity 260ms ease-out;
+    }
+
+    .bonus-popup {
+      animation: popup-bounce 400ms forwards;
+    }
+  }
 }
 
-.overlay.is-open {
-  opacity: 1;
-  visibility: visible;
-  pointer-events: auto;
+.bonus-popup {
+  max-width: 450px;
+  width: 100%;
+  padding: 24px;
+  box-sizing: border-box;
+  background: linear-gradient(180deg, #748394 0%, #2D3844 100%);
+  border: 1px solid #A3E7FF;
+  box-shadow: 0 4px 40px 5px #000000;
+  border-radius: 15px;
+  transform: scale(0.2);
+  opacity: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 24px 0;
+
+  &__title-wrap{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  &__title {
+    font-weight: 400;
+    font-size: 24px;
+    line-height: 32px;
+    color: rgba(255, 255, 255, 0.9);
+  }
+
+  &__close{
+    width: 24px;
+    height: 24px;
+    cursor: pointer;
+    transition: 0.2s;
+
+    &:hover{
+      opacity: 0.7;
+      transition: 0.2s;
+    }
+  }
+
+  &__value {
+    font-size: 32px;
+    font-weight: 700;
+    color: #ff4b4b;
+    margin-bottom: 20px;
+  }
+
+  &__btn {
+    background: global.$background_button;
+    color: global.$text_additional_color;
+    font-weight: 500;
+    font-size: 14px;
+    line-height: 18px;
+    padding: 16px 24px;
+    box-sizing: border-box;
+    border-radius: 5px;
+    border: none;
+    cursor: pointer;
+    transition: background 200ms;
+
+    &:hover {
+      background: #95abc5;
+    }
+  }
+
+  &__main{
+    padding: 56px 0 20px 0;
+    background: url("../images/bonus-behind.png") center center / contain no-repeat;
+    text-align: center;
+  }
+
+  &__prize-wrap{
+    box-sizing: border-box;
+    position: relative;
+    display: inline-flex;
+  }
+
+  &__prize-top{
+    background: linear-gradient(180deg, #008BBD 0%, #004E76 34.62%, #0D6BC1 100%);
+    min-height: 63px;
+    padding: 4px 20px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 8px;
+    z-index: 1;
+  }
+
+  &__prize-bottom{
+    position: absolute;
+    inset: -1px;
+    border-radius: 8px;
+    background: linear-gradient(
+                    180deg,
+                    #0166B1 0%,
+                    #FFFFFF 51%,
+                    #FFF185 100%
+    );
+    z-index: 0;
+
+  }
+
+  &__prize-image{
+    display: block;
+    width: auto;
+    height: 30px;
+  }
+}
+
+@keyframes popup-bounce {
+  0% { transform: scale(0.2); opacity: 0; }
+  60% { transform: scale(1.15); opacity: 1; }
+  100% { transform: scale(1); }
 }

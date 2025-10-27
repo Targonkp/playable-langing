@@ -7,7 +7,25 @@
     <title>Landing с Godzilla и анимацией спина</title>
   </head>
   <body>
-    <div class="overlay" aria-hidden="true"></div>
+    <div class="overlay" aria-hidden="true">
+      <div class="bonus-popup">
+        <div class="bonus-popup__title-wrap">
+          <span class="bonus-popup__title">Вы выиграли</span>
+          <span class="bonus-popup__close"
+            ><img src="images/close.svg" alt="Закрыть" aria-label="Закрыть"
+          /></span>
+        </div>
+        <div class="bonus-popup__main">
+          <div class="bonus-popup__prize-wrap">
+            <div class="bonus-popup__prize-top">
+              <img src="images/bonus/main-bonus-ru.svg" class="bonus-popup__prize-image" alt="Бонус" />
+            </div>
+            <div class="bonus-popup__prize-bottom"></div>
+          </div>
+        </div>
+        <button class="bonus-popup__btn" id="bonus-close">Забрать бонус</button>
+      </div>
+    </div>
     <header>
       <div class="header-wrap">
         <div class="language-container-wrap">
@@ -68,12 +86,34 @@
     </header>
     <main>
       <div class="main-container">
-        <div class="wheel-container">
-          <img class="wheel wheel__base" src="images/wheels/wheel_ru.png" alt="Колесо" />
-          <button class="wheel wheel__button" aria-label="Запустить вращение">
-            <img src="images/wheel_button.png" alt="Кнопка" aria-hidden="true" />
-          </button>
-          <img class="wheel wheel__border" src="images/wheel_frame.png" alt="Граница колеса" />
+        <div class="wheel-wrapper">
+          <div class="wheel-container">
+            <div class="wheel__main">
+              <img class="wheel wheel__base" src="images/wheel.png" alt="Колесо" />
+              <div class="wheel__text">
+                <span class="bonus-item text"
+                  ><img src="images/bonus/bonus-text-ru-1.svg" alt="40000"
+                /></span>
+                <span class="bonus-item text"
+                  ><img src="images/bonus/bonus-text-ru-2.svg" alt="25000"
+                /></span>
+                <span class="bonus-item image"><img src="images/bonus/bonus-2.svg" /></span>
+                <span class="bonus-item image"><img src="images/bonus/bonus-2.svg" /></span>
+                <span class="bonus-item text"
+                  ><img src="images/bonus/bonus-text-ru-3.svg" alt="30000"
+                /></span>
+                <span class="bonus-item image"><img src="images/bonus/bonus-1.svg" /></span>
+                <span class="bonus-item text"
+                  ><img src="images/bonus/bonus-text-ru-4.svg" alt="25000"
+                /></span>
+                <span class="bonus-item image"><img src="images/bonus/bonus-2.svg" /></span>
+              </div>
+            </div>
+            <button class="wheel wheel__button" aria-label="Запустить вращение">
+              <img src="images/wheel_button.png" alt="Кнопка" aria-hidden="true" />
+            </button>
+            <img class="wheel wheel__border" src="images/wheel_frame.png" alt="Граница колеса" />
+          </div>
         </div>
         <div class="clouds-container"></div>
         <div class="character-container">
