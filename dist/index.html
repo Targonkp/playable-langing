@@ -8,20 +8,22 @@
   <link href="main.css" rel="stylesheet"></head>
   <body>
     <div class="overlay" aria-hidden="true">
-      <div class="bonus-popup">
-        <div class="bonus-popup__title-wrap">
-          <span class="bonus-popup__title">Вы выиграли</span>
-          <span class="bonus-popup__close"><img src="images/close.svg" alt="Закрыть" aria-label="Закрыть"></span>
-        </div>
-        <div class="bonus-popup__main">
-          <div class="bonus-popup__prize-wrap">
-            <div class="bonus-popup__prize-top">
-              <img src="images/main-bonus-ru.svg" class="bonus-popup__prize-image" alt="Бонус">
-            </div>
-            <div class="bonus-popup__prize-bottom"></div>
+      <div class="overlay__scroll-wrapper">
+        <div class="bonus-popup">
+          <div class="bonus-popup__title-wrap">
+            <span class="bonus-popup__title">Вы выиграли</span>
+            <span class="bonus-popup__close"><img src="images/close.svg" alt="Закрыть" aria-label="Закрыть"></span>
           </div>
+          <div class="bonus-popup__main">
+            <div class="bonus-popup__prize-wrap">
+              <div class="bonus-popup__prize-top">
+                <img src="images/main-bonus-ru.svg" class="bonus-popup__prize-image" alt="Бонус">
+              </div>
+              <div class="bonus-popup__prize-bottom"></div>
+            </div>
+          </div>
+          <button class="bonus-popup__btn" id="bonus-close">Забрать бонус</button>
         </div>
-        <button class="bonus-popup__btn" id="bonus-close">Забрать бонус</button>
       </div>
     </div>
     <header>
