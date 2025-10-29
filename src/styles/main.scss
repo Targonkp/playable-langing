@@ -63,6 +63,7 @@ header{
   box-sizing: border-box;
   overflow: hidden;
 
+
   @include adaptive.medium{
     padding: 150px 40px;
     background-size: 100% 100%;

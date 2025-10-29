@@ -1,6 +1,6 @@
 const apiKey = process.env.WEATHER_API_KEY;
 const city = "Astana";
-const weatherContainer = document.querySelector(".weather-container__temperature");
+const weatherContainerTemp = document.querySelector(".weather-container__temperature");
 const weatherElement = document.querySelector(".weather-container__value");
 const cityNameElement = document.querySelector(".weather-container__city");
 
@@ -40,7 +40,6 @@ if (cachedData && cachedTime && Date.now() - cachedTime < CACHE_TIME) {
       }
       const weather = data.current;
       weatherElement.innerHTML = weather.temperature;
-      weatherElement.classList.remove("weather-loading");
 
       //сохраняю кэш
       localStorage.setItem(cacheKey, JSON.stringify(weather.temperature));
@@ -48,8 +47,10 @@ if (cachedData && cachedTime && Date.now() - cachedTime < CACHE_TIME) {
     })
     .catch((error) => {
       console.error("Произошла ошибка:", error.message);
-      weatherContainer.classList.add("weather-message");
-      weatherContainer.innerHTML = "Температура<br>недоступна";
+      weatherContainerTemp.classList.add("weather-message");
+      weatherContainerTemp.innerHTML = "Температура<br>недоступна";
+    })
+    .finally(() => {
       weatherElement.classList.remove("weather-loading");
     });
 }
