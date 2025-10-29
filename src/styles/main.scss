@@ -464,7 +464,12 @@ header{
   overflow: hidden;
   display: block;
 
-  @include adaptive.medium{
+  @include adaptive.medium
+  {
+    display: none;
+  }
+
+  @include adaptive.medium-portrait{
     display: none;
   }
 
